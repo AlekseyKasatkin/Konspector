@@ -5,8 +5,10 @@ from datasets import load_dataset
 # import ffmpeg
 import os
 
-device = "cuda:0" if torch.cuda.is_available() else "cpu"
-torch_dtype = torch.float16 if torch.cuda.is_available() else torch.float32
+#device = "cuda:0" if torch.cuda.is_available() else "cpu"
+device = "cuda:0"
+#torch_dtype = torch.float16 if torch.cuda.is_available() else torch.float32
+torch_dtype = torch.float16
 
 model_id = "openai/whisper-large-v3"
 
@@ -32,7 +34,9 @@ pipe = pipeline(
 
 # dataset = load_dataset("distil-whisper/librispeech_long", "clean", split="validation")
 # sample = dataset[0]["audio"]
-sample = os.getcwd() + '/Kasatkinas/samples/book.mp3'
+
+os.listdir('/samples')
+sample = os.getcwd() + '/samples/book.mp3'
 result = pipe(sample)
 
 txt = list(result['text'])
@@ -50,11 +54,3 @@ with open('result.txt', 'w', encoding='utf-8', errors='ignore') as f:
 
 print('Well Done!')
 
-
-
-import plotly.express as px
-data = [1, 2, 2, 3, 3, 3, 4, 4, 5]
-
-fig = px.histogram(data)
-
-fig.show()
