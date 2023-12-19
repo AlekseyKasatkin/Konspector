@@ -5,6 +5,8 @@ from datasets import load_dataset
 # import ffmpeg
 import os
 
+from utils import utils
+
 #device = "cuda:0" if torch.cuda.is_available() else "cpu"
 device = "cuda:0"
 #torch_dtype = torch.float16 if torch.cuda.is_available() else torch.float32
@@ -35,9 +37,8 @@ pipe = pipeline(
 # dataset = load_dataset("distil-whisper/librispeech_long", "clean", split="validation")
 # sample = dataset[0]["audio"]
 
-os.listdir('/samples')
-sample = os.getcwd() + '/samples/book.mp3'
-result = pipe(sample)
+file = utils.getfile('./samples')
+result = pipe(file)
 
 txt = list(result['text'])
 n = 0
@@ -49,8 +50,10 @@ for i, el in enumerate(txt):
         n = 1
 txt = ''.join(txt)
 
-with open('result.txt', 'w', encoding='utf-8', errors='ignore') as f:
+with open('./samples/result.txt', 'w', encoding='utf-8', errors='ignore') as f:
     f.writelines(txt)
+
+os.remove(file)
 
 print('Well Done!')
 
