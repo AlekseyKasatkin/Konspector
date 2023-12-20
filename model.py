@@ -38,7 +38,7 @@ pipe = pipeline(
 # sample = dataset[0]["audio"]
 
 file = utils.getfile('./samples')
-result = pipe(file)
+result = pipe(file, generate_kwargs={'language': "russian", 'task': 'transcribe'})
 
 txt = list(result['text'])
 n = 0
