@@ -28,5 +28,5 @@
 - Некоторым людям проще воспринимать информацию в текстовом формате, чем в аудиоформате.
 
 # Запуск UI:
-python sl.py
-streamlit run sl.py
+- python sl.py
+- streamlit run sl.py
