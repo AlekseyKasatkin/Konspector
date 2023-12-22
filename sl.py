@@ -11,7 +11,7 @@ def main():
         page_title="Загрузка MP3 файла",
         page_icon="🎵",
         layout="wide",
-        initial_sidebar_state="expanded",
+        initial_sidebar_state="expanded"
     )
 
     # Custom CSS for background image
@@ -35,10 +35,10 @@ def main():
         save_uploaded_file(uploaded_file)
         st.success("Файл успешно загружен!")
 
-    import subprocess
-
     def run_file():
+        'to start calculation'
         import time
+        import subprocess
         start_time = time.time()
         file_path = './model.py'
         end_time = time.time()
@@ -51,7 +51,7 @@ def main():
         seconds = int(execution_time % 60)
         print(f"Время выполнения скрипта: {hours} часов, {minutes} минут, {seconds} секунд")
 
-    st.button('Запустить файл', on_click=run_file)
+    st.button('Запустить', on_click=run_file)
 
     print("Ещё секунду Вашего терпения :)")
 
@@ -59,19 +59,18 @@ def main():
     file_path = './samples/result.txt'
     if file_path:
         if os.path.isfile(file_path):
-            # Чтение содержимого файла
+            # read the file
             with open(file_path, "r") as file:
                 file_contents = file.read()
 
-            # Отображение содержимого файла на странице
+            # Sample of trunscribed speach to the screen
             st.text("Содержимое файла:")
             st.text(file_contents[0:1000])
 
-            # Скачивание файла
+            # download result-file
             st.download_button("Скачать файл", data=file_contents, file_name=os.path.basename(file_path))
         else:
             st.error("Файл не найден. Пожалуйста, проверьте путь к файлу.")
-
 
 
 if __name__ == "__main__":
