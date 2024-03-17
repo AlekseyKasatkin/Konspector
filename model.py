@@ -1,7 +1,7 @@
 import torch
 from transformers import AutoModelForSpeechSeq2Seq, AutoProcessor, pipeline
 from datasets import load_dataset
-# import ffmpeg
+import ffmpeg
 import os
 
 from utils import utils
@@ -52,7 +52,8 @@ n = 0
 for i, el in enumerate(txt):
     if el == ' ':
         n += 1
-    if n % 10 == 0:
+# ---> Changed by lma:     if n % 10 == 0:
+    if n == 10:
         txt[i] = el + '\n '
         n = 1
 
