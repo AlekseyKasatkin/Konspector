@@ -4,8 +4,6 @@ import os
 sys.path.append(os.path.dirname(__file__))
 from sl_2 import run_file
 
-# run_file теперь будет функцией main
-#run_file = main()
 
 def test_run_file(monkeypatch):
     test_file_name = "sl_test.py"
@@ -13,12 +11,14 @@ def test_run_file(monkeypatch):
 
     # Создаем контекст для виртуальной сессии Streamlit
     with st.empty():
-        # Заменяем функцию set_option, чтобы устанавливать параметры перед запуском
+        # Заменяем функцию set_option,
+        # чтобы устанавливать параметры перед запуском
         monkeypatch.setattr(st, 'set_option', lambda key, value: None)
 
         # Загружаем и запускаем файл в Streamlit, используя функцию main
         result = run_file(test_file_path)
 
     # Убедимся, что результат выполнения файла соответствует ожидаемому
-    assert "Время выполнения скрипта" in result, f"Ожидаемая подстрока 'Время выполнения скрипта' не найдена в строке '{result}'"
-
+    assert "Время выполнения скриптa" in result, \
+        (f"Ожидаемая подстрока 'Время выполнения скрипта'"
+         f" не найдена в строке '{result}'")
