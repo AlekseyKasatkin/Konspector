@@ -27,8 +27,7 @@ def main():
         }
         </style>
         """,
-        unsafe_allow_html=True,
-    )
+        unsafe_allow_html=True,)
 
     st.title("Конспектор ^_^")
 
