@@ -8,4 +8,7 @@
     <orderEntry type="jdk" jdkName="Python 3.10 (Konspector2)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
+  <component name="SonarLintModuleSettings">
+    <option name="uniqueId" value="6a28df19-8414-401b-a993-082cf2e91018" />
+  </component>
 </module>
