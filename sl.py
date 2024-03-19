@@ -15,8 +15,7 @@ def main():
         page_title="Загрузка MP3 файла",
         page_icon="🎵",
         layout="wide",
-        initial_sidebar_state="expanded"
-    )
+        initial_sidebar_state="expanded")
 
     # Custom CSS for background image
     st.markdown(
