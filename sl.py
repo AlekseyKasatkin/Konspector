@@ -38,7 +38,7 @@ def main():
         st.success("Файл успешно загружен!")
 
     def run_file():
-        'to start calculation'
+        """to start calculation"""
         import time
         import subprocess
         start_time = time.time()
