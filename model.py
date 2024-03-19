@@ -1,15 +1,13 @@
 import torch
 from transformers import AutoModelForSpeechSeq2Seq, AutoProcessor, pipeline
-from datasets import load_dataset
-# import ffmpeg
 import os
-
 from utils import utils
 
 # Set the device to use CUDA if available, otherwise use CPU
 device = "cuda:0" if torch.cuda.is_available() else "cpu"
 
-# Set the torch data type to float16 if CUDA is available, otherwise use float32
+# Set the torch data type to float16 if CUDA is available,
+# otherwise use float32
 torch_dtype = torch.float16 if torch.cuda.is_available() else torch.float32
 
 # Specify the model ID
@@ -17,8 +15,9 @@ model_id = "openai/whisper-large-v3"
 
 # Load the pre-trained model
 model = AutoModelForSpeechSeq2Seq.from_pretrained(
-    model_id, torch_dtype=torch_dtype, low_cpu_mem_usage=True, use_safetensors=True
-)
+    model_id, torch_dtype=torch_dtype,
+    low_cpu_mem_usage=True,
+    use_safetensors=True)
 model.to(device)
 
 # Load the processor
@@ -35,8 +34,7 @@ pipe = pipeline(
     batch_size=8,
     return_timestamps=True,
     torch_dtype=torch_dtype,
-    device=device,
-)
+    device=device,)
 
 # Get the file path
 file = utils.getfile('./samples')

@@ -1,9 +1,13 @@
 import streamlit as st
 import os
 
+filepath = './samples/result.txt'
+
+
 def save_uploaded_file(uploaded_file):
     with open(os.path.join("./samples", uploaded_file.name), "wb") as f:
         f.write(uploaded_file.getbuffer())
+
 
 def main():
     # Set page configuration
@@ -41,7 +45,6 @@ def main():
         import subprocess
         start_time = time.time()
         file_path = './model.py'
-        end_time = time.time()
         subprocess.run(['python', file_path])
 
         end_time = time.time()
@@ -49,18 +52,19 @@ def main():
         hours = int(execution_time // 3600)
         minutes = int((execution_time % 3600) // 60)
         seconds = int(execution_time % 60)
-        print(f"Время выполнения скрипта: {hours} часов, {minutes} минут, {seconds} секунд")
+        print(f"Время выполнения скрипта: {hours} часов, "
+              f"{minutes} минут, {seconds} секунд")
 
     st.button('Запустить', on_click=run_file)
 
     print("Ещё секунду Вашего терпения :)")
 
     st.title("Загрузка и скачивание файла")
-    file_path = './samples/result.txt'
-    if file_path:
-        if os.path.isfile(file_path):
+
+    if filepath:
+        if os.path.isfile(filepath):
             # read the file
-            with open(file_path, "r") as file:
+            with open(filepath, "r") as file:
                 file_contents = file.read()
 
             # Sample of trunscribed speach to the screen
@@ -68,7 +72,9 @@ def main():
             st.text(file_contents[0:1000])
 
             # download result-file
-            st.download_button("Скачать файл", data=file_contents, file_name=os.path.basename(file_path))
+            st.download_button("Скачать файл",
+                               data=file_contents,
+                               file_name=os.path.basename(filepath))
         else:
             st.error("Файл не найден. Пожалуйста, проверьте путь к файлу.")
 
