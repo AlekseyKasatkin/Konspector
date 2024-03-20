@@ -1,7 +1,5 @@
 import streamlit as st
-import sys
 import os
-# sys.path.append(os.path.dirname(__file__))
 from sl import run_file
 
 
