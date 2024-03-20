@@ -1,7 +1,5 @@
 import torch
 from transformers import AutoModelForSpeechSeq2Seq, AutoProcessor, pipeline
-from datasets import load_dataset
-import ffmpeg
 from model import transform, SAMPLESDIR
 from utils.utils import getfile
 
@@ -23,6 +21,3 @@ def test_getfile():
 
     # Test of get the file
     assert file is not None, "Needed mp3 file!"
-
-
-
