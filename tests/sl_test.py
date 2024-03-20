@@ -1,8 +1,8 @@
 import streamlit as st
 import sys
 import os
-sys.path.append(os.path.dirname(__file__))
-from sl_2 import run_file
+# sys.path.append(os.path.dirname(__file__))
+from sl import run_file
 
 
 def test_run_file(monkeypatch):
