@@ -3,3 +3,4 @@ transformers==4.36.2
 datasets==2.15.0
 streamlit
 accelerate
+ffmpeg
