@@ -1,6 +1,5 @@
 import torch
 from transformers import AutoModelForSpeechSeq2Seq, AutoProcessor, pipeline
-import ffmpeg
 from model import transform, SAMPLESDIR
 from utils.utils import getfile
 
