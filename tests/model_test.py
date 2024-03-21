@@ -16,6 +16,7 @@ def test_transform():
     # For GitHub workflow
     assert txt == '', "Model return the text!)"
 
+
 def test_getfile():
 
     file = getfile(SAMPLESDIR)
